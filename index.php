@@ -6,6 +6,7 @@ include ('components/objectif.php');
 include ('components/alumni.php'); 
 include ('components/donate.php'); 
 include ('components/footer.php'); 
+// include ('functions/db_connect.php'); 
 ?>
 <!-- Font Awesome CDN (pour les icônes) -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

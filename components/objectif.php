@@ -33,7 +33,7 @@
 
       <!-- Texte -->
       <div class="col-lg-6 ml-auto" data-aos="fade-left">
-        <h3 class="fw-bold mb-4" style="color:#012587; font-size:1.7rem;"> <strong> Pour les anciens étudiants (ALUMINS) </strong></h3>
+        <h3 class="fw-bold mb-4" style="color:#012587; font-size:1.7rem;"> <strong> Pour les anciens étudiants  </strong></h3>
 
         <div class="feature-item mb-3 d-flex">
           <i class="fab fa-whatsapp fa-2x mr-4" style="color:#012587;"></i>
@@ -78,7 +78,7 @@
               border-radius:25px; 
               z-index:0;">
           </div>
-          <img src="src/student1.png" class="img-fluid rounded " style="position:relative; z-index:2;">
+          <img src="src/Bg2.png" class="img-fluid rounded " style="position:relative; z-index:2;">
         </div>
       </div>
 
@@ -102,7 +102,7 @@
         </div>
 
         <div class="feature-item mb-3 d-flex">
-          <i class="fas fa-donate fa-2x mr-3" style="color:#012587;"></i>
+           <i class="fas fa-hand-holding-heart fa-2x mr-3" style="color:#012587;"></i>
           <h4 class="m-0" style="color:#012587;">Faciliter les dons</h4>
         </div>
 

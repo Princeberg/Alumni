@@ -9,8 +9,8 @@
                   <h1  data-aos="fade-up" data-aos-delay="100">ALUMNI de L'Université de N'djaména </h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Retrouvez d’anciens camarades, échangez des opportunités, trouvez des mentors et participez à des événements qui font avancer votre carrière.</p>
                  <p class="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="300" >
-  <a href="pages/signup.html" class="btn btn-primary py-3 px-5 btn-pill border-0" style="background-color: #012587;">
-    Rejoindre la communauté
+  <a href="pages/signup.php" class="btn btn-primary py-3 px-5 btn-pill border-0" style="background-color: #012587;" data-aos="fade-up">
+    Rejoindre la communauté 
   </a>
 </p>
                 </div>
