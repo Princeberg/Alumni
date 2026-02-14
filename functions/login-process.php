@@ -98,12 +98,9 @@ switch ($user['statut_id']) {
         showPopup('error', 'Statut de compte inconnu.', '../pages/login.php');
 }
 
-/* ========= Session ========= */
 $_SESSION['user_id']      = $user['id'];
-$_SESSION['fullname']     = $user['fullname'];
 $_SESSION['account_type'] = $user['account_type'];
 
-/* ========= Redirection ========= */
 switch ($user['account_type']) {
     case 'student':
         $redirect = '../pages/Student/index.php';
@@ -121,13 +118,12 @@ switch ($user['account_type']) {
         showPopup('error', 'Type de compte invalide.', '../pages/login.php');
 }
 
-/* ========= Succès ========= */
+
 showPopup(
     'success',
     'Bienvenue <b>' . htmlspecialchars($user['fullname']) . '</b> 👋',
     $redirect
 );
 
-/* ========= Cleanup ========= */
 $stmt->close();
 $conn->close();
