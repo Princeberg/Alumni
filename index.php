@@ -3,6 +3,7 @@ include('components/header.php');
 include ('components/hero.php'); 
 include ('components/about.php'); 
 include ('components/objectif.php'); 
+include ('components/publications.php');
 include ('components/alumni.php'); 
 include ('components/donate.php'); 
 include ('components/footer.php'); 

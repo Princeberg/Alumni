@@ -13,6 +13,7 @@
                 <li><a href="#home-section" class="nav-link">Accueil</a></li>
                 <li><a href="#courses-section" class="nav-link">L'université  </a></li>
                 <li><a href="#programs-section" class="nav-link">Nos Objectifs</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#don-section" class="nav-link">Faire un Don</a></li>
               </ul>
             </nav>

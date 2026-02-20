@@ -17,6 +17,7 @@
           <li><a href="pages/login.php" style="color: white;">Сonnexion</a></li>
           <li><a href="#courses-section" style="color: white;">L'université </a></li>
           <li><a href="#programs-section" style="color: white;">Nos Objectifs</a></li>
+           <li><a href="#publications" style="color: white;">Publications</a></li>
           <li><a href="#don-section" style="color: white;">Faire un Don</a></li>
         </ul>
       </div>

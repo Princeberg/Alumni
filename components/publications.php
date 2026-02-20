@@ -1,10 +1,10 @@
 <!-- SECTION PUBLICATIONS -->
-<div class="site-section" id="publications" style="background-color: #012587; padding: 80px 0;">
+<div class="site-section" id="publications" style="background-color: #012587; padding: 80px 0;" data-aos="fade-left"> 
   <div class="container">
 
     <div class="row justify-content-center mb-4">
       <div class="col-md-8 text-center">
-        <h2 style="font-weight:700; color: #ffcc00; margin-top: 100px">Publications Récentes</h2>
+        <h2 style="font-weight:700; color: #ffcc00">Publications Récentes</h2>
         <p style="color: white;">
           Découvrez les dernières offres et annonces partagées par la communauté.
         </p>
@@ -27,7 +27,7 @@
       <div class="cards-wrapper" id="cardsWrapper">
         <div class="cards-row" id="cardsRow">
           <?php
-          require_once '../../functions/db_connect.php';
+          require_once 'functions/db_connect.php';
 
           $sql = "SELECT id, title, description, type, created_at, date, lieu, heure, lien 
                   FROM posts 
@@ -225,12 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let currentPosition = 0;
   const cardItems = document.querySelectorAll('.card-item');
-  
-  // Vérifier s'il y a des cartes
-  if (cardItems.length === 0) {
-    return;
-  }
-  
   const cardWidth = cardItems[0]?.offsetWidth || 300;
   const gap = 20; // Gap de 20px entre les cartes
   
@@ -248,17 +242,15 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Mettre à jour l'affichage des flèches
   function updateArrows() {
-    const visibleCards = getVisibleCards();
-    const maxPosition = Math.max(0, cardItems.length - visibleCards);
+    const maxPosition = Math.max(0, cardItems.length - getVisibleCards());
     
-    if (prevBtn && nextBtn) {
-      prevBtn.style.display = currentPosition > 0 ? 'flex' : 'none';
-      nextBtn.style.display = currentPosition < maxPosition ? 'flex' : 'none';
-    }
+    prevBtn.style.display = currentPosition > 0 ? 'flex' : 'none';
+    nextBtn.style.display = currentPosition < maxPosition ? 'flex' : 'none';
   }
   
   // Défiler vers la gauche
   function scrollPrev() {
+    const visibleCards = getVisibleCards();
     if (currentPosition > 0) {
       currentPosition--;
       row.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
@@ -279,13 +271,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Événements des flèches
-  if (prevBtn) {
-    prevBtn.addEventListener('click', scrollPrev);
-  }
-  
-  if (nextBtn) {
-    nextBtn.addEventListener('click', scrollNext);
-  }
+  prevBtn.addEventListener('click', scrollPrev);
+  nextBtn.addEventListener('click', scrollNext);
   
   // Mettre à jour lors du redimensionnement
   let resizeTimer;
@@ -304,31 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
       updateArrows();
     }, 250);
   });
-  
-  // Support du swipe tactile (optionnel)
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  wrapper.addEventListener('touchstart', function(e) {
-    touchStartX = e.changedTouches[0].screenX;
-  }, false);
-  
-  wrapper.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, false);
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe gauche -> suivant
-      scrollNext();
-    }
-    if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe droite -> précédent
-      scrollPrev();
-    }
-  }
   
   // Initialisation
   setTimeout(() => {

@@ -2,7 +2,6 @@
 <section class="alumni-section" style="background-color: #ffcc00; padding: 80px 0;" data-aos="fade-up">
   <div class="container">
 
-
     <?php
     require_once '../../functions/db_connect.php';
     
@@ -15,7 +14,12 @@
           <p style="color: #012587; font-size: 1.1rem;">Base de données non disponible pour le moment.</p>
         </div>
       </div>
-    <?php else: ?>
+    <?php else: 
+    
+    // Inclure la session pour obtenir l'ID de l'utilisateur connecté
+    require_once 'session.php';
+    
+    ?>
     
     <!-- BARRE DE RECHERCHE SIMPLE -->
     <div class="search-section mb-5" id="search-form">
@@ -51,14 +55,14 @@
             </div>
           </form>
         
-          
         </div>
       </div>
     </div>
     
     <?php
     
-    $conditions = ["account_type = 'alumni'", "statut_id = 2"];
+    // MODIFICATION ICI : Exclure l'utilisateur connecté
+    $conditions = ["account_type = 'alumni'", "statut_id = 2", "id != $user_id"];
     
     if(isset($_GET['search_alumni']) && !empty($_GET['search_alumni'])) {
         $search_term = $conn->real_escape_string($_GET['search_alumni']);
@@ -82,7 +86,6 @@
       <div class="row">
         <?php while($row = $result->fetch_assoc()): 
           
-         
           $initials = '';
           $name_parts = explode(' ', trim($row['fullname']));
           foreach($name_parts as $part) {
@@ -90,7 +93,6 @@
           }
           $initials = substr($initials, 0, 2);
           
-       
           $avatar_color = match($row['gender']) {
             'male' => '#012587',
             'female' => '#8b0000',
@@ -125,7 +127,6 @@
             
             <div class="alumni-card-body" style="padding: 30px 25px; text-align: center;">
               
-              
               <!-- Identité -->
               <h3 class="alumni-name mb-2" style="color: #012587; font-weight: 700; font-size: 1.3rem;">
                 <?php echo htmlspecialchars($row['fullname']); ?>
@@ -143,7 +144,7 @@
                 
                 <div class="info-item d-flex align-items-center mb-2">
                   <i class="fas fa-university" style="color: <?php echo $avatar_color; ?>; width: 25px; text-align: center;"></i>
-                  <span style="color: #012587; font-weight: 600; margin-left: 20px; font-size: 15px">
+                  <span style="color: #012587; font-weight: 600; margin-left: 10px; font-size: 15px">
                     <?php echo htmlspecialchars($row['faculty'] ?? 'Faculté non spécifiée'); ?>
                   </span>
                 </div>
