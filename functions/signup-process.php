@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once 'db_connect.php';
-
-/* ========= Fonction d'affichage popup ========= */
 function showPopup($type, $message, $redirect) {
     echo "
     <!DOCTYPE html>
@@ -10,7 +8,7 @@ function showPopup($type, $message, $redirect) {
     <head>
         <meta charset='UTF-8'>
         <title>Inscription</title>
-  <link rel='icon' type='image/x-icon' href='../src/logo.png'> 
+        <link rel='icon' type='image/x-icon' href='../src/logo.png'> 
         <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     </head>
     <body>
@@ -72,11 +70,31 @@ if (!in_array($account_type, ['student', 'alumni'])) {
     $errors[] = "Type de compte invalide.";
 }
 
+/* ========= Validation âge (minimum 18 ans) ========= */
+if (!empty($birthdate)) {
+    try {
+        $birthDateObj = new DateTime($birthdate);
+        $today = new DateTime();
+        $age = $today->diff($birthDateObj)->y;
+
+        if ($age < 18) {
+            $errors[] = "Vous devez avoir au moins 18 ans pour créer un compte.";
+        }
+    } catch (Exception $e) {
+        $errors[] = "Date de naissance invalide.";
+    }
+}
+
+
+if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
+    $errors[] = "Le mot de passe doit contenir au moins 8 caractères, incluant une majuscule, une minuscule, un chiffre et un caractère spécial.";
+}
+
 if (!empty($errors)) {
     showPopup('error', implode('<br>', $errors), '../pages/signup.php');
 }
 
-/* ========= Vérification email ========= */
+
 $check = $conn->prepare("SELECT id FROM users WHERE email = ?");
 $check->bind_param("s", $email);
 $check->execute();
@@ -87,7 +105,7 @@ if ($check->num_rows > 0) {
 }
 $check->close();
 
-/* ========= Insertion ========= */
+
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 $insert = $conn->prepare("

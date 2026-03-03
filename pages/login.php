@@ -80,7 +80,7 @@
         </button>
 
         <div class="login-links">
-          <a href="forgot-password.html" >Mot de passe oublié ?</a>
+          <a href="forgot_password.php" >Mot de passe oublié ?</a>
          <p> <a href="signup.php" style="text-decoration: underline; color: rgb(206, 5, 5)">Créer un compte </a> </p>
         </div>
 
