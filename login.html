@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/x-icon" href="src/logo.png">  
+  <title>Page de connexion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="site-wrap">
+  <section class="login-section fade-up">
+    <a href="index.php" class="back-arrow" aria-label="Retour à la page d'accueil">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <div class="hero-box">
+
+      <div class="hero-left">
+        <h1>Connexion à votre compte</h1>
+        <p>Accédez à votre espace étudiant ou Alumni pour rejoindre la communauté et développer votre réseau.</p>
+      </div>
+
+      <!-- DROITE : FORMULAIRE DE CONNEXION -->
+      <div class="hero-right">
+        <form id="login-card" class="login-card" action="functions/login-process.php" method="POST">
+
+          <div class="form-header">
+            <h2>Renseignez vos identifiants</h2>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Adresse électronique</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-envelope input-icon"></i>
+              <input type="email" id="email" name="email" placeholder="votre.email@domaine.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="password">Mot de passe</label>
+              <a href="forgot_password.php" class="forgot-link">Oublié ?</a>
+            </div>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
+              <!-- Icône d'œil pour afficher/masquer -->
+              <i class="fa-regular fa-eye toggle-password" id="togglePassword" aria-label="Afficher ou masquer le mot de passe"></i>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <span>Connexion</span>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
+
+          <div class="login-footer">
+            <p>Vous n'avez pas de compte ? <a href="signup.html" class="signup-link">Créer un compte</a></p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- Script pour la fonctionnalité d'affichage du mot de passe -->
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#password');
+
+  togglePassword.addEventListener('click', function () {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    
+    this.classList.toggle('fa-eye');
+    this.classList.toggle('fa-eye-slash');
+  });
+</script>
+
+</body>
+</html>

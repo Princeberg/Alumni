@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/x-icon" href="src/logo.png">  
+  <title>Inscription</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="site-wrap">
+  <div class="signup-container fade-up">
+    
+    <!-- Flèche de retour -->
+    <a href="index.php" class="back-arrow" aria-label="Retour à la page d'accueil">
+      <i class="fa-solid fa-arrow-left " ></i>
+    </a>
+    
+    <!-- Indicateur de progression -->
+    <div class="step-indicator mb-4">
+      <div class="step active" id="step1-indicator">
+        <div class="step-circle">1</div>
+        <div class="step-label">Informations<br>Personnelles</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step2-indicator">
+        <div class="step-circle">2</div>
+        <div class="step-label">Informations<br>Académiques</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step3-indicator">
+        <div class="step-circle">3</div>
+        <div class="step-label">Création<br>Compte</div>
+      </div>
+    </div>
+    
+    <!-- Formulaire en étapes -->
+    <form class="signup-form" id="signup-form" action="functions/signup-process.php" method="POST">
+      
+      <!-- Étape 1: Informations Personnelles -->
+      <div class="form-step active" id="step1">
+        <h3 class="h5 fw-bold mb-3" style="color: var(--primary);">Étape 1: Informations Personnelles</h3>
+        
+        <div class="form-row mb-3">
+          <div class="form-group full-width">
+            <label for="fullname">Nom(s) et Prénom(s) *</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-user input-icon"></i>
+              <input type="text" id="fullname" name="fullname" placeholder="Ex: Mouhamed Jean" required>
+            </div>
+            <div class="error-message" id="lastname-error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row g-3 mb-3">
+          <div class="form-group col-md-6">
+  <label>Date de Naissance *</label>
+  <div class="birthdate-select-group">
+    <!-- Jour -->
+    <div class="input-wrapper">
+      <select id="birth_day" name="birth_day" class="custom-select" required>
+        <option value="" disabled selected>Jour</option>
+        <script>
+          for (let i = 1; i <= 31; i++) {
+            document.write(`<option value="${i < 10 ? '0' + i : i}">${i}</option>`);
+          }
+        </script>
+      </select>
+      <i class="fa-solid fa-chevron-down select-icon"></i>
+    </div>
+
+    <!-- Mois -->
+    <div class="input-wrapper">
+      <select id="birth_month" name="birth_month" class="custom-select" required>
+        <option value="" disabled selected>Mois</option>
+        <option value="01">Janvier</option>
+        <option value="02">Février</option>
+        <option value="03">Mars</option>
+        <option value="04">Avril</option>
+        <option value="05">Mai</option>
+        <option value="06">Juin</option>
+        <option value="07">Juillet</option>
+        <option value="08">Août</option>
+        <option value="09">Septembre</option>
+        <option value="10">Octobre</option>
+        <option value="11">Novembre</option>
+        <option value="12">Décembre</option>
+      </select>
+      <i class="fa-solid fa-chevron-down select-icon"></i>
+    </div>
+
+    <!-- Année -->
+    <div class="input-wrapper">
+      <select id="birth_year" name="birth_year" class="custom-select" required>
+        <option value="" disabled selected>Année</option>
+        <!-- Les années de 2010 à 1950 -->
+        <script>
+          const currentYear = new Date().getFullYear();
+          for (let i = currentYear - 14; i >= 1950; i--) {
+            document.write(`<option value="${i}">${i}</option>`);
+          }
+        </script>
+      </select>
+      <i class="fa-solid fa-chevron-down select-icon"></i>
+    </div>
+  </div>
+  <div class="error-message" id="birthdate-error"></div>
+</div>
+          
+          <div class="form-group col-md-6">
+            <label>Genre *</label>
+            <div class="radio-group d-flex gap-3 mt-2">
+              <label class="radio-option">
+                <input type="radio" name="gender" value="male" required> Masculin
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="gender" value="female"> Féminin
+              </label>
+            </div>
+            <div class="error-message" id="gender-error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row mb-4">
+          <div class="form-group full-width">
+            <label for="whatsapp">Contact WhatsApp *</label>
+            <div class="input-wrapper">
+              <i class="fa-brands fa-whatsapp input-icon"></i>
+              <input type="text" id="whatsapp" name="whatsapp" placeholder="Ex: +235 66 00 00 00" required>
+            </div>
+            <div class="error-message" id="whatsapp-error"></div>
+          </div>
+        </div>
+        
+        <div class="form-actions d-flex justify-content-end">
+          <button type="button" class="btn-submit" id="next-to-step2" style="width: auto; padding: 10px 24px;">
+            <span>Suivant</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Étape 2: Informations Académiques -->
+      <div class="form-step" id="step2" style="display: none;">
+        <h3 class="h5 fw-bold mb-3" style="color: var(--primary);">Étape 2: Informations Académiques</h3>
+        
+        <div class="form-row mb-3">
+          <div class="form-group full-width">
+            <label for="faculty">Faculté *</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-graduation-cap input-icon"></i>
+              <select id="faculty" name="faculty" class="custom-select" required>
+                <option value="" disabled selected>Sélectionnez votre faculté</option>
+                <option value="Faculté des Sciences Juridiques et Politiques">Faculté des Sciences Juridiques et Politiques</option>
+                <option value="Faculté des Sciences Economiques et de Gestion">Faculté des Sciences Economiques et de Gestion</option>
+                <option value="Faculté des Sciences de la Santé Humaine">Faculté des Sciences de la Santé Humaine</option>
+                <option value="Faculté des Sciences Exactes et Appliquées">Faculté des Sciences Exactes et Appliquées</option>
+                <option value="Faculté des Sciences Humaines et Sociales">Faculté des Sciences Humaines et Sociales</option>
+                <option value="Faculté des Sciences de l’Education">Faculté des Sciences de l’Education</option>
+                <option value="Faculté des Langues, Lettres, Arts et Communication">Faculté des Langues, Lettres, Arts et Communication</option>
+              </select>
+            </div>
+            <div class="error-message" id="faculty-error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row mb-4">
+          <div class="form-group full-width">
+            <label>Type de compte *</label>
+            <div class="radio-group d-flex gap-4 mt-2">
+              <label class="radio-option">
+                <input type="radio" name="account_type" value="student" required> Étudiant
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="account_type" value="alumni" required> Alumni
+              </label>
+            </div>
+            <div class="error-message" id="account-type-error"></div>
+          </div>
+        </div>
+        
+        <div class="form-actions d-flex justify-content-between">
+          <button type="button" class="btn-secondary-custom" id="prev-to-step1">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Précédent</span>
+          </button>
+          <button type="button" class="btn-submit" id="next-to-step3" style="width: auto; padding: 10px 24px;">
+            <span>Suivant</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Étape 3: Création du Compte -->
+      <div class="form-step" id="step3" style="display: none;">
+        <h3 class="h5 fw-bold mb-3" style="color: var(--primary);">Étape 3: Création du Compte</h3>
+        
+        <div class="form-row mb-3">
+          <div class="form-group full-width">
+            <label for="email">Adresse Email *</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-envelope input-icon"></i>
+              <input type="email" id="email" name="email" placeholder="ex: etudiant@univ-ndjamena.td" required>
+            </div>
+            <div class="error-message" id="email-error"></div>
+          </div>
+        </div>
+        
+        <div class="form-row mb-4">
+          <div class="form-group full-width">
+            <label for="password">Mot de passe *</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="password" name="password" placeholder="********" required>
+              <!-- Icône d'œil pour basculer le mot de passe -->
+              <i class="fa-regular fa-eye toggle-password" id="togglePassword" aria-label="Afficher ou masquer le mot de passe"></i>
+            </div>
+            <div class="error-message" id="password-error"></div>
+          </div>
+        </div>
+        
+        <div class="error-message mb-3" id="terms-error"></div>
+        
+        <div class="form-actions d-flex justify-content-between">
+          <button type="button" class="btn-secondary-custom" id="prev-to-step2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Précédent</span>
+          </button>
+          <button type="submit" class="btn-submit" id="submit-form" style="width: auto; padding: 10px 28px;">
+            <span>S'inscrire</span>
+            <i class="fa-solid fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    
+    <div class="login-footer text-center mt-4 pt-3 border-top">
+      <p>Déjà inscrit ? <a href="login.html" class="signup-link">Connectez-vous ici</a></p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+ 
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#password');
+
+  if (togglePassword && password) {
+    togglePassword.addEventListener('click', function () {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+  }
+
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const step3 = document.getElementById('step3');
+
+  const ind1 = document.getElementById('step1-indicator');
+  const ind2 = document.getElementById('step2-indicator');
+  const ind3 = document.getElementById('step3-indicator');
+
+  document.getElementById('next-to-step2').addEventListener('click', () => {
+    step1.style.display = 'none';
+    step2.style.display = 'block';
+    ind1.classList.remove('active');
+    ind2.classList.add('active');
+  });
+
+  document.getElementById('prev-to-step1').addEventListener('click', () => {
+    step2.style.display = 'none';
+    step1.style.display = 'block';
+    ind2.classList.remove('active');
+    ind1.classList.add('active');
+  });
+
+  document.getElementById('next-to-step3').addEventListener('click', () => {
+    step2.style.display = 'none';
+    step3.style.display = 'block';
+    ind2.classList.remove('active');
+    ind3.classList.add('active');
+  });
+
+  document.getElementById('prev-to-step2').addEventListener('click', () => {
+    step3.style.display = 'none';
+    step2.style.display = 'block';
+    ind3.classList.remove('active');
+    ind2.classList.add('active');
+  });
+</script>
+
+</body>
+</html>

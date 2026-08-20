@@ -1,300 +1,135 @@
-<!-- SECTION PUBLICATIONS -->
-<div class="site-section" id="publications" style="background-color: #012587; padding: 80px 0;" data-aos="fade-left"> 
-  <div class="container">
-
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-8 text-center">
-        <h2 style="font-weight:700; color: #ffcc00">Publications Récentes</h2>
-        <p style="color: white;">
-          Découvrez les dernières offres et annonces partagées par la communauté.
+<section class="publications-section py-5 bg-light-custom" id="publications">
+  <div class="container py-4">
+    <div class="row justify-content-center mb-5 text-center">
+      <div class="col-lg-8 fade-up fade-delay-1">
+        <h2 class="display-5 fw-bold mb-2">Publications Récentes</h2>
+        <p class="fs-6 mb-0">
+          Découvrez les dernières informations partagés par la communauté.
         </p>
       </div>
     </div>
 
-    <!-- Carrousel -->
-    <div class="carousel-container position-relative">
-      <!-- Flèche gauche -->
-      <button class="carousel-arrow prev-arrow" id="prevBtn">
-        <i class="fas fa-chevron-left"></i>
+    <!-- Carrousel Wrapper -->
+    <div class="carousel-relative-container fade-up fade-delay-2">
+      <!-- Flèches de navigation -->
+      <button class="carousel-nav-btn prev-btn" id="pubPrevBtn" aria-label="Précédent">
+        <i class="fa-solid fa-chevron-left"></i>
       </button>
-      
-      <!-- Flèche droite -->
-      <button class="carousel-arrow next-arrow" id="nextBtn">
-        <i class="fas fa-chevron-right"></i>
+      <button class="carousel-nav-btn next-btn" id="pubNextBtn" aria-label="Suivant">
+        <i class="fa-solid fa-chevron-right"></i>
       </button>
 
-      <!-- Conteneur des cartes -->
-      <div class="cards-wrapper" id="cardsWrapper">
-        <div class="cards-row" id="cardsRow">
-          <?php
-          require_once 'functions/db_connect.php';
+      <!-- Conteneur des cartes (Scrollable) -->
+      <div class="publications-carousel" id="pubCarousel">
+        <?php
+        require_once 'functions/db_connect.php';
 
-          $sql = "SELECT id, title, description, type, created_at, date, lieu, heure, lien 
-                  FROM posts 
-                  ORDER BY created_at DESC";
+        $sql = "SELECT id, title, description, type, created_at, date, lieu, heure, lien 
+                FROM posts 
+                ORDER BY created_at DESC";
 
-          $result = $conn->query($sql);
+        $result = $conn->query($sql);
 
-          if ($result && $result->num_rows > 0):
-            while($row = $result->fetch_assoc()):
+        if ($result && $result->num_rows > 0):
+          while($row = $result->fetch_assoc()):
 
-              $created = date("d/m/Y", strtotime($row['created_at']));
-              $event_date = !empty($row['date']) ? date("d/m/Y", strtotime($row['date'])) : null;
+            $created = date("d/m/Y", strtotime($row['created_at']));
+            $event_date = !empty($row['date']) ? date("d/m/Y", strtotime($row['date'])) : null;
 
-              $short_desc = strlen($row['description']) > 150 
-                ? substr($row['description'], 0, 150).'...' 
-                : $row['description'];
-          ?>
-          
-          <div class="card-item">
-            <div class="card h-100 shadow-sm border-0 publication-card">
-              <div class="card-body d-flex flex-column">
+            $short_desc = strlen($row['description']) > 130 
+              ? substr($row['description'], 0, 130).'...' 
+              : $row['description'];
+        ?>
+        
+        <!-- Item carte -->
+        <!-- Item carte transparente Outline -->
+<div class="pub-card-item">
+  <div class="card h-100 p-4 rounded-4 bg-transparent pub-card-outline">
+    <div class="card-body p-0 d-flex flex-column">
 
-                <!-- Type -->
-                <span class="badge mb-2"
-                      style="background:#ffcc00; color:#012587; width:fit-content;">
-                  <?= htmlspecialchars($row['type']); ?>
-                </span>
+      <!-- Badge Type & Date -->
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <span class="badge pub-badge px-3 py-2 fw-medium">
+          <?= htmlspecialchars($row['type']); ?>
+        </span>
+        <small class="fs-7">
+          <?= $created; ?>
+        </small>
+      </div>
 
-                <!-- Titre -->
-                <h5 style="color:#012587; font-weight:600;">
-                  <?= htmlspecialchars($row['title']); ?>
-                </h5>
+      <!-- Titre -->
+      <h3 class="h5 fw-bold mb-2 pub-title">
+        <?= htmlspecialchars($row['title']); ?>
+      </h3>
 
-                <!-- Description -->
-                <p class="text-muted" style="font-size:0.9rem;">
-                  <?= htmlspecialchars($short_desc); ?>
-                </p>
+      <!-- Description -->
+      <p class="fs-7 mb-4 flex-grow-1">
+        <?= htmlspecialchars($short_desc); ?>
+      </p>
 
-                <!-- Infos supplémentaires -->
-                <div class="mb-3" style="font-size:0.85rem;">
-
-                  <?php if($event_date): ?>
-                    <div><i class="far fa-calendar text-primary"></i> <?= $event_date; ?></div>
-                  <?php endif; ?>
-
-                  <?php if(!empty($row['heure'])): ?>
-                    <div><i class="far fa-clock text-primary"></i> <?= htmlspecialchars($row['heure']); ?></div>
-                  <?php endif; ?>
-
-                  <?php if(!empty($row['lieu'])): ?>
-                    <div><i class="fas fa-map-marker-alt text-primary"></i> <?= htmlspecialchars($row['lieu']); ?></div>
-                  <?php endif; ?>
-
-                </div>
-
-                <!-- Footer -->
-                <small class="text-muted mb-3">
-                  Publié le <?= $created; ?>
-                </small>
-
-                <!-- Bouton En savoir plus -->
-                <?php if(!empty($row['lien'])): ?>
-                  <a href="<?= htmlspecialchars($row['lien']); ?>"
-                     target="_blank"
-                     class="btn mt-auto"
-                     style="background:#012587; color:white; border-radius:30px;">
-                    En savoir plus
-                  </a>
-                <?php endif; ?>
-
-              </div>
+      <!-- Métadonnées (Date, Heure, Lieu) -->
+      <?php if($event_date || !empty($row['heure']) || !empty($row['lieu'])): ?>
+        <div class="pub-meta-list d-flex flex-column gap-2 mb-4 pt-3">
+          <?php if($event_date): ?>
+            <div class="d-flex align-items-center gap-2 fs-7">
+              <i class="fa-regular fa-calendar"></i> 
+              <span><?= $event_date; ?></span>
             </div>
-          </div>
+          <?php endif; ?>
 
-          <?php endwhile; else: ?>
-            <div class="col-12 text-center text-white">
-              <p>Aucune publication disponible.</p>
+          <?php if(!empty($row['heure'])): ?>
+            <div class="d-flex align-items-center gap-2 fs-7">
+              <i class="fa-regular fa-clock"></i> 
+              <span><?= htmlspecialchars($row['heure']); ?></span>
+            </div>
+          <?php endif; ?>
+
+          <?php if(!empty($row['lieu'])): ?>
+            <div class="d-flex align-items-center gap-2 fs-7">
+              <i class="fa-solid fa-location-dot"></i> 
+              <span><?= htmlspecialchars($row['lieu']); ?></span>
             </div>
           <?php endif; ?>
         </div>
+      <?php endif; ?>
+
+      <!-- Bouton d'action -->
+      <?php if(!empty($row['lien'])): ?>
+        <a href="<?= htmlspecialchars($row['lien']); ?>" target="_blank" rel="noopener" class="btn btn-primary w-100 py-2 mt-auto d-inline-flex align-items-center justify-content-center gap-2 fs-7">
+          En savoir plus <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      <?php endif; ?>
+
+    </div>
+  </div>
+</div>
+
+        <?php endwhile; else: ?>
+          <div class="w-100 text-center py-5">
+            <p class="mb-0">Aucune publication disponible pour le moment.</p>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
 
   </div>
-</div>
+</section>
+<script> 
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('pubCarousel');
+    const prevBtn = document.getElementById('pubPrevBtn');
+    const nextBtn = document.getElementById('pubNextBtn');
 
-<style>
-.publication-card {
-  border-radius: 15px;
-  transition: 0.3s ease;
-  height: 100%;
-}
+    if (carousel && prevBtn && nextBtn) {
+        const scrollAmount = 340; // Largeur de carte (320px) + Gap (20px/1.5rem)
 
-.publication-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
 
-/* Styles du carrousel */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 10px 0;
-}
-
-.cards-wrapper {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-.cards-row {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.5s ease;
-  will-change: transform;
-}
-
-.card-item {
-  flex: 0 0 300px; /* Largeur fixe de 300px par carte */
-  max-width: 300px;
-  min-width: 300px;
-}
-
-/* Style des flèches */
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: white;
-  border: none;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  color: #012587;
-}
-
-.carousel-arrow:hover {
-  background: #ffcc00;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prev-arrow {
-  left: -20px;
-}
-
-.next-arrow {
-  right: -20px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .prev-arrow {
-    left: -10px;
-  }
-  
-  .next-arrow {
-    right: -10px;
-  }
-  
-  .card-item {
-    flex: 0 0 260px;
-    max-width: 260px;
-    min-width: 260px;
-  }
-}
-
-@media (max-width: 576px) {
-  .carousel-arrow {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .card-item {
-    flex: 0 0 220px;
-    max-width: 220px;
-    min-width: 220px;
-  }
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const wrapper = document.getElementById('cardsWrapper');
-  const row = document.getElementById('cardsRow');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  
-  let currentPosition = 0;
-  const cardItems = document.querySelectorAll('.card-item');
-  const cardWidth = cardItems[0]?.offsetWidth || 300;
-  const gap = 20; // Gap de 20px entre les cartes
-  
-  // Calculer la largeur totale d'une carte + gap
-  const itemWidth = cardWidth + gap;
-  
-  // Nombre de cartes visibles basé sur la largeur du wrapper
-  function getVisibleCards() {
-    const wrapperWidth = wrapper.offsetWidth;
-    return Math.floor(wrapperWidth / itemWidth);
-  }
-  
-  // Largeur totale du conteneur
-  const totalWidth = cardItems.length * itemWidth;
-  
-  // Mettre à jour l'affichage des flèches
-  function updateArrows() {
-    const maxPosition = Math.max(0, cardItems.length - getVisibleCards());
-    
-    prevBtn.style.display = currentPosition > 0 ? 'flex' : 'none';
-    nextBtn.style.display = currentPosition < maxPosition ? 'flex' : 'none';
-  }
-  
-  // Défiler vers la gauche
-  function scrollPrev() {
-    const visibleCards = getVisibleCards();
-    if (currentPosition > 0) {
-      currentPosition--;
-      row.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
     }
-    updateArrows();
-  }
-  
-  // Défiler vers la droite
-  function scrollNext() {
-    const visibleCards = getVisibleCards();
-    const maxPosition = Math.max(0, cardItems.length - visibleCards);
-    
-    if (currentPosition < maxPosition) {
-      currentPosition++;
-      row.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
-    }
-    updateArrows();
-  }
-  
-  // Événements des flèches
-  prevBtn.addEventListener('click', scrollPrev);
-  nextBtn.addEventListener('click', scrollNext);
-  
-  // Mettre à jour lors du redimensionnement
-  let resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      // Réinitialiser la position si nécessaire
-      const visibleCards = getVisibleCards();
-      const maxPosition = Math.max(0, cardItems.length - visibleCards);
-      
-      if (currentPosition > maxPosition) {
-        currentPosition = maxPosition;
-        row.style.transform = `translateX(-${currentPosition * itemWidth}px)`;
-      }
-      
-      updateArrows();
-    }, 250);
-  });
-  
-  // Initialisation
-  setTimeout(() => {
-    updateArrows();
-  }, 100);
 });
-</script>
+</script> 

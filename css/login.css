@@ -1,0 +1,467 @@
+/* =============================================
+   VARIABLES & CONFIGURATION GLOBALE
+   ============================================= */
+:root {
+    --primary: #012587;
+    --secondary: #ffcc00;
+    --text-dark: #111111;
+    --text-muted: #666666;
+    --border-color: rgba(1, 37, 135, 0.2);
+    --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--secondary);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-wrap {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+/* =============================================
+   SECTION & CONTENEURS PRINCIPAUX
+   ============================================= */
+.login-section,
+.signup-container {
+    position: relative;
+    width: 100%;
+}
+
+.signup-container {
+    max-width: 700px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 40px rgba(1, 37, 135, 0.15);
+}
+
+.back-arrow {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.25s ease;
+    z-index: 10;
+}
+
+.signup-container .back-arrow {
+    top: 20px;
+    left: 20px;
+}
+
+.back-arrow:hover {
+    transform: translateX(-4px);
+}
+
+.hero-box {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(1, 37, 135, 0.15);
+}
+
+/* =============================================
+   INDICATEUR D'ÉTAPES (STEP INDICATOR)
+   ============================================= */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.step-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* État actif de l'étape */
+.step.active .step-circle {
+    background-color: var(--primary);
+    color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(1, 37, 135, 0.2);
+}
+
+.step-label {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.step.active .step-label {
+    color: var(--primary);
+}
+
+/* Ligne reliant les étapes */
+.step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #e2e8f0;
+    margin: 0 10px;
+    transform: translateY(-12px);
+}
+
+/* =============================================
+   COLONNES LOGIN (HERO LEFT / RIGHT)
+   ============================================= */
+.hero-left {
+    flex: 1;
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-left h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+.hero-left p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-right {
+    flex: 1;
+    padding: 3.5rem 3rem;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.login-card {
+    width: 100%;
+}
+
+.form-header h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* =============================================
+   CHAMPS DE FORMULAIRE & ICÔNES (INCLUANT L'ŒIL)
+   ============================================= */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+}
+
+.forgot-link {
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.forgot-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    padding: 12px 40px !important; /* Marge pour icône gauche (cadenas/user) et droite (œil) */
+    font-size: 0.95rem;
+    font-family: inherit;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(1, 37, 135, 0.1);
+}
+
+/* Icônes de gauche */
+.input-wrapper .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    opacity: 0.6;
+    font-size: 0.95rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Icône de droite (Afficher/Masquer le mot de passe) */
+.input-wrapper .toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    opacity: 0.6;
+    font-size: 0.95rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity 0.2s ease;
+}
+
+.input-wrapper .toggle-password:hover {
+    opacity: 1;
+}
+
+/* Boutons radio (Genre, Type de compte) */
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+    accent-color: var(--primary);
+    width: 16px;
+    height: 16px;
+}
+
+/* =============================================
+   BOUTONS & NAVIGATION DES ÉTAPES
+   ============================================= */
+.form-actions {
+    margin-top: 1.5rem;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    background-color: #011f70;
+}
+
+.btn-secondary-custom {
+    background-color: #e2e8f0;
+    color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary-custom:hover {
+    background-color: #cbd5e1;
+}
+
+/* =============================================
+   FOOTER & RESPONSIVE DESIGN
+   ============================================= */
+.login-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.signup-link {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.signup-link:hover {
+    color: #011f70;
+}
+
+@media (max-width: 850px) {
+    .hero-box {
+        flex-direction: column;
+    }
+
+    .hero-left, .hero-right {
+        padding: 2.5rem 1.75rem;
+    }
+
+    .hero-left h1 {
+        font-size: 1.75rem;
+    }
+
+    .back-arrow {
+        top: -40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .signup-container {
+        padding: 2.5rem 1.25rem 1.5rem 1.25rem;
+    }
+
+    .step-label {
+        font-size: 0.65rem;
+    }
+}
+
+/* Animation Fade-Up */
+.fade-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Layout pour les 3 selects de date de naissance */
+.birthdate-select-group {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.birthdate-select-group .input-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+/* Style des selects sans padding excessif à gauche */
+.birthdate-select-group select {
+    padding: 12px 30px 12px 12px !important; /* Marge réduite pour laisser de la place au texte */
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+/* Petite flèche personnalisée pour les selects */
+.select-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    opacity: 0.6;
+    font-size: 0.75rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Adaptabilité mobile */
+@media (max-width: 480px) {
+    .birthdate-select-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
