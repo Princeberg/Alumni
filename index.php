@@ -6,7 +6,6 @@ include ('components/publications.php');
 include ('components/alumni.php'); 
 include ('components/donate.php'); 
 include ('components/footer.php'); 
-// include ('functions/db_connect.php'); 
 ?>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 

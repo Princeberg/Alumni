@@ -467,6 +467,103 @@ body {
     flex: 0 0 320px;
     max-width: 320px;
 }
+
+/* MODALE AJOUT */
+
+/* =============================================
+   MODAL CRÉATION DE PUBLICATION
+   ============================================= */
+
+/* Conteneur principal du Modal */
+.modal-content {
+    background-color: #ffffff;
+    border: 1px solid var(--secondary);
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* En-tête du Modal */
+.modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-title {
+    color: var(--primary);
+}
+
+/* Style des champs de formulaire */
+.modal-body .form-label {
+    color: var(--primary);
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+}
+
+.modal-body .form-control,
+.modal-body .form-select {
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    color: var(--primary);
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus sur les champs */
+.modal-body .form-control:focus,
+.modal-body .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(1, 37, 135, 0.1);
+    outline: none;
+}
+
+/* Personnalisation du placeholder */
+.modal-body .form-control::placeholder {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+/* Pied du Modal & Boutons */
+.modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-footer .btn-light {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.modal-footer .btn-light:hover {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.modal-footer .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.modal-footer .btn-primary:hover {
+    filter: brightness(0.9);
+}
+
+.btn-add
+
+{
+    background-color: var(--secondary);
+    border: none;
+    color: var(--primary);
+    font-weight: 700;
+}
+.btn-add:hover
+{
+    transform: scale(1.02);
+}
 /* =============================================
    FOOTER STYLES
    ============================================= */
@@ -481,23 +578,16 @@ body {
     color: var(--secondary) !important;
     opacity: 1;
     transform: translateX(4px);
+    text-decoration: none;
 }
 
 .social-icon-btn {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
     color: var(--secondary);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-icon-btn:hover {
-    background-color: var(--secondary);
-    color: var(--primary);
-    transform: translateY(-3px);
 }

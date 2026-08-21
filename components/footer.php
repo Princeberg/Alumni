@@ -15,7 +15,7 @@
 
       <!-- Liens Utiles -->
       <div class="col-lg-3 col-md-6 fade-up fade-delay-1">
-        <h3 class="h5 fw-bold mb-3" style="color: var(--secondary);">
+        <h3 class="h5 fw-bold mb-3" style="color: var(--secondary); text-decoration: none;">
           Liens utiles
         </h3>
         <ul class="list-unstyled mb-0 d-flex flex-column gap-2">

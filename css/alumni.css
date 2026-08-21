@@ -1,0 +1,220 @@
+.profile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 2000;
+  box-shadow: -5px 0 25px rgba(1, 37, 135, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.profile-sidebar.active {
+  right: 0;
+}
+
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: none;
+  z-index: 1500;
+}
+
+.profile-overlay.active {
+  display: block;
+}
+
+.sidebar-header {
+  background-color: #012587;
+  border-bottom: 2px solid #ffcc00;
+}
+
+.btn-close-sidebar {
+  background: transparent;
+  border: none;
+  color: #ffcc00;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* --- Avatar & Badges --- */
+.profile-avatar {
+  font-size: 60px;
+  color: #012587;
+}
+
+.profile-badge {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #012587;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.status-badge {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+.badge-active {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.badge-inactive {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* --- Design de la liste des options Mentorat --- */
+.mentor-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mentor-option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.mentor-option-item input[type="radio"] {
+  display: none;
+}
+
+.mentor-option-item:hover {
+  background-color: #f1f5f9;
+}
+
+.mentor-option-item.selected.active-border {
+  border-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.mentor-option-item.selected.inactive-border {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.icon-active {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.icon-inactive {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.option-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #012587;
+}
+
+.option-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+/* --- Formulaire & Controls --- */
+.form-label-custom {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #012587;
+}
+
+.form-input-custom {
+  border: 1.5px solid rgba(1, 37, 135, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+.form-input-custom:focus {
+  border-color: #012587;
+  box-shadow: 0 0 0 0.2rem rgba(1, 37, 135, 0.15);
+}
+
+/* --- Boutons --- */
+.btn-save-profile {
+  width: 100%;
+  background-color: #012587;
+  color: #ffcc00;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-save-profile:hover {
+  background-color: #011f70;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background-color: rgba(1, 37, 135, 0.1);
+}
+
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  background-color:red;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: red; 
+  color: #ffffff;
+  text-decoration: none;
+}

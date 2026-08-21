@@ -1,90 +1,105 @@
-<!-- Section Mentors -->
-<div class="site-section" style="background-color:  #ffcc00; padding: 60px;" data-aos="fade-up" id="mentors">
+<!-- =============================================
+   SECTION MENTORAT - DESIGN HARMONISÉ
+   ============================================= -->
+
+<section id="mentors" class="mentors-section section-padding">
   <div class="container">
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-8 text-center">
-        <h2 class="section-title mb-3" style="font-weight:700; color: #012587; margin-top: 50px;">Nos Alumnis Mentor</h2>
-        <p style="font-size:1.1rem; color: #012587;">
-         Nos anciens étudiants prêts à partager leurs connaissances et vous guider dans votre parcours.
+    
+    <!-- En-tête de la section -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center" data-aos="fade-up">
+        <h2 class="mentors-section-title mb-3">Nos Alumnis Mentors</h2>
+        <div class="title-underline mx-auto mb-3"></div>
+        <p class="mentors-section-subtitle">
+          Nos anciens étudiants prêts à partager leurs connaissances et à vous guider dans votre parcours académique et professionnel.
         </p>
       </div>
     </div>
 
     <?php
     require_once '../../functions/db_connect.php';
+    
     $sql = "SELECT * FROM users 
             WHERE account_type = 'alumni' 
             AND statut_id = 2 
-            AND mentorat = 1 
+            AND mentorat IS NOT NULL
+            AND mentorat = 1   
             ORDER BY fullname ASC";
     
     $result = $conn->query($sql);
     
-    if ($result->num_rows > 0):
+    if ($result && $result->num_rows > 0):
     ?>
     
-    <div class="row">
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
       <div class="col-12">
-        <!-- Container swippable -->
-        <div class="mentors-slider swiper-container" style="overflow: hidden; padding: 20px 0;"  >
-          <div class="swiper-wrapper">
-            <?php while($row = $result->fetch_assoc()): ?>
-            <div class="swiper-slide" style="width: 300px; height: auto;">
-              <div class="card mentor-card h-100 border-0 shadow-sm" data-aos="zoom-in" data-aos-delay="100">
-                <div class="card-body text-center p-4">
-                  <!-- Avatar avec initiales -->
+        <div class="mentors-slider swiper-container">
+          <div class="swiper-wrapper py-3">
+            
+            <?php while($row = $result->fetch_assoc()): 
+              
+              $words = explode(' ', trim($row['fullname']));
+              $initials = mb_substr($words[0] ?? '', 0, 1) . mb_substr($words[1] ?? '', 0, 1);
+              $initials = strtoupper($initials);
+            ?>
+            <div class="swiper-slide">
+              <div class="card mentor-card h-100 border-0">
+                <div class="card-body text-center p-4 d-flex flex-column align-items-center justify-content-between">
                   
-                  
-                  <h5 class="card-title mb-2" style="color:  #ffcc00; font-weight: 800; font-size: 20px; text-transform: uppercase">
-                    <?php echo htmlspecialchars($row['fullname']); ?>
-                  </h5>
-                  
-                  <p class=" mb-1" style="font-size: 0.9rem; color: #ffcc00 ">
-                    <i class="fas fa-graduation-cap" style="color: #ffcc00"></i> 
-                    <?php echo htmlspecialchars($row['faculty']); ?>
-                  </p>
-                  
-                  
-                  <!-- Contacts -->
-                  <div class="mentor-contacts mt-3">
-                    <?php if($row['email']): ?>
-                    <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>" 
-                       class="btn btn-sm btn-primary mb-2" 
-                       style="display: block; margin: 0 auto 5px; width: 50%; background-color: #ffcc00; color: #012587">
-                      <i class="fas fa-envelope" style="color: #012587" ></i> Email
+                  <div class="w-100">
+                    
+                    <!-- Nom du mentor -->
+                    <h5 class="mentor-name mb-2">
+                      <?php echo htmlspecialchars($row['fullname']); ?>
+                    </h5>
+                    
+                    <!-- Faculté / Spécialité -->
+                    <div class="mentor-faculty mb-3">
+                      <i class="fa-solid fa-graduation-cap mr-1"></i> 
+                      <span><?php echo htmlspecialchars($row['faculty']); ?></span>
+                    </div>
+                  </div>
+
+                  <!-- Actions de contact -->
+                  <div class="mentor-contacts w-100 mt-2">
+                    <?php if(!empty($row['email'])): ?>
+                    <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>" class="btn-contact btn-email mb-2">
+                      <i class="fa-solid fa-envelope"></i> Email
                     </a>
                     <?php endif; ?>
                     
-                    <?php if($row['whatsapp']): ?>
-                    <a href="https://wa.me/<?php echo htmlspecialchars($row['whatsapp']); ?>" 
-                       target="_blank" 
-                       class="btn btn-sm mb-2" 
-                       style="display: block; margin: 0 auto; width: 70%; background-color: #ffcc00; color: #012587">
-                      <i class="fab fa-whatsapp"></i> WhatsApp
+                    <?php if(!empty($row['whatsapp'])): 
+                      // Nettoyage du numéro pour WhatsApp
+                      $clean_phone = preg_replace('/[^0-9]/', '', $row['whatsapp']);
+                    ?>
+                    <a href="https://wa.me/<?php echo htmlspecialchars($clean_phone); ?>" target="_blank" class="btn-contact btn-whatsapp">
+                      <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
                     <?php endif; ?>
                   </div>
+
                 </div>
               </div>
             </div>
             <?php endwhile; ?>
+
           </div>
           
-          <!-- Navigation buttons -->
-          <div class="swiper-button-next" style="color: #012587;"></div>
-          <div class="swiper-button-prev" style="color: #012587;"></div>
-          
-          <!-- Pagination dots -->
+          <!-- Commandes de navigation Swiper -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
     </div>
     
     <?php else: ?>
+    <!-- Message si aucun mentor n'est disponible -->
     <div class="row justify-content-center">
       <div class="col-md-8 text-center">
-        <div class="alert alert-info" style="color: #012587">
-          <p class="mb-0">Aucun mentor disponible pour le moment. Revenez bientôt !</p>
+        <div class="no-mentors-alert p-4 rounded-lg">
+          <i class="fa-solid fa-user-clock mb-2 fa-2x" style="color: #012587;"></i>
+          <p class="m-0 font-weight-bold" style="color: #012587;">Aucun mentor disponible pour le moment. Revenez bientôt !</p>
         </div>
       </div>
     </div>
@@ -93,94 +108,54 @@
     $conn->close();
     ?>
 
+    <!-- Note d'information globale -->
     <div class="row mt-4 justify-content-center">
       <div class="col-md-10 text-center">
-        <p style="color: #012587; font-size:0.95rem;">
-          Nos mentors sont disponibles pour vous accompagner dans vos projets académiques et professionnels.
+        <p class="mentors-footer-text m-0">
+          <i class="fa-solid fa-circle-info mr-1"></i> Nos mentors sont disponibles pour vous accompagner gracieusement dans vos projets académiques et professionnels.
         </p>
       </div>
     </div>
+
   </div>
-</div>
-
-<!-- Styles additionnels pour le slider -->
-<style>
-.mentor-card {
-  transition: transform 0.3s ease;
-  border-radius: 15px;
-  background-color: #012587; 
-}
-
-.mentor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
-}
-
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-button-next, .swiper-button-prev {
-  background-color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.swiper-button-next:after, .swiper-button-prev:after {
-  font-size: 20px;
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #012587;
-}
-</style>
-
-<!-- Inclusion de Swiper JS et CSS -->
+</section>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
-// Initialisation du slider Swiper
 document.addEventListener('DOMContentLoaded', function() {
-  var swiper = new Swiper('.mentors-slider', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+  if (document.querySelector('.mentors-slider')) {
+    new Swiper('.mentors-slider', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: false,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
       },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 25,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
       },
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 30,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-    }
-  });
+      breakpoints: {
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 25,
+        },
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 25,
+        }
+      }
+    });
+  }
 });
 </script>

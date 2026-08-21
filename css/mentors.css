@@ -1,0 +1,132 @@
+.mentors-section {
+  background-color: #ffcc00;
+  padding: 80px 0;
+}
+
+
+.mentors-section-title {
+  color: #012587;
+  font-weight: 800;
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.title-underline {
+  width: 60px;
+  height: 4px;
+  background-color: #012587;
+  border-radius: 2px;
+}
+
+.mentors-section-subtitle {
+  color: #012587;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Carte Mentor */
+.mentor-card {
+  background-color: #012587;
+  border-radius: 10px;
+}
+
+
+.mentor-name {
+  color: #ffcc00;
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mentor-faculty {
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Boutons de contact */
+.btn-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-email {
+  background-color: #ffcc00;
+  color: #012587;
+}
+
+.btn-email:hover {
+  background-color: #e6b800;
+  color: #012587;
+  text-decoration: none;
+}
+
+.btn-whatsapp {
+  background-color: none; 
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-whatsapp:hover {
+  background-color: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
+  text-decoration: none;
+}
+
+/* Personnalisation Swiper */
+.mentors-slider {
+  padding-bottom: 45px !important;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+  background-color: #012587;
+  color: #ffcc00 !important;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(1, 37, 135, 0.2);
+}
+
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background-color: #012587;
+  opacity: 0.4;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #012587;
+  opacity: 1;
+  width: 20px;
+  border-radius: 10px;
+}
+
+/* Alert sans mentor */
+.no-mentors-alert {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 2px dashed #012587;
+}
+
+.mentors-footer-text {
+  color: #012587;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

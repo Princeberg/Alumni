@@ -5,15 +5,12 @@
     <!-- En-tête de Section -->
     <div class="row justify-content-center mb-5 text-center">
       <div class="col-md-8 fade-up">
-        <span class="text-uppercase tracking-wider fs-6 fw-bold d-block mb-2" style="color: var(--primary);">
-          Soutenez l'Excellence
-        </span>
         <h2 class="display-5 fw-bold mb-3" style="color: var(--primary);">
           Faire un Don
         </h2>
         <div class="mx-auto mb-3" style="width: 60px; height: 4px; background-color: var(--primary); border-radius: 10px;"></div>
         <p class="fs-6 mb-0" style="color: var(--primary); opacity: 0.9;">
-          Soutenez l'Université de N'Djamena en effectuant un don physique ou financier. Votre contribution aide à améliorer les conditions d'apprentissage et les projets étudiants.
+          Votre contribution aide à améliorer les conditions d'apprentissage et les projets étudiants.
         </p>
       </div>
     </div>
@@ -36,7 +33,7 @@
                 Fournitures scolaires, livres, matériels informatiques ou tout autre don matériel peuvent être déposés directement à l'université ou dans les départements concernés.
               </p>
             </div>
-            <div class="pt-3 mt-3" style="border-top: 1px solid rgba(1, 37, 135, 0.15);">
+            <div class="pt-3 mt-3" style="border-top: 1px solid var(--primary);">
               <span class="fw-semibold fs-7" style="color: var(--primary);">Points de collecte : Campus principaux</span>
             </div>
           </div>
@@ -73,7 +70,7 @@
     <div class="row mt-5 justify-content-center fade-up fade-delay-2">
       <div class="col-md-10 text-center">
         <p class="fw-medium mb-0" style="color: var(--primary); font-size: 0.95rem;">
-          Chaque don compte ! Merci de contribuer au développement de l'Université de N'Djamena et au bien-être des étudiants.
+          Chaque don compte ! Merci de contribuer au développement de l'Université de N'Djaména et au bien-être des étudiants.
         </p>
       </div>
     </div>

@@ -3,7 +3,7 @@ session_start();
 require_once '../../functions/db_connect.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login.php");
+    header("Location: ../../login.php");
     exit();
 }
 
@@ -16,6 +16,5 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
-
 $fullname = $user['fullname'];
 ?>

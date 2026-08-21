@@ -1,38 +1,31 @@
 <?php
 include('session.php');
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Étudiant</title>
+    <link rel="icon" type="image/x-icon" href="../../src/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/student.css">
+    <link rel="stylesheet" href="../../css/mentors.css">
+    </style>
+</head>
+<body>
+
+<?php
 include('header.php'); 
 include('publications.php');
-include('mentors.php'); 
-include ('donate.php'); 
-include ('footer.php'); 
-
-
-?>
-
-<script>
-  // Année courante
-  document.getElementById("currentYear").textContent = new Date().getFullYear();
-</script>
-<script>
-  document.getElementById("currentYear").textContent = new Date().getFullYear();
-</script>   
-  </div> <!-- .site-wrap -->
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../../js/jquery-3.3.1.min.js"></script>
-  <script src="../../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../../js/jquery-ui.js"></script>
-  <script src="../../js/popper.min.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
-  <script src="../../js/owl.carousel.min.js"></script>
-  <script src="../../js/jquery.stellar.min.js"></script>
-  <script src="../../js/jquery.countdown.min.js"></script>
-  <script src="../../js/bootstrap-datepicker.min.js"></script>
-  <script src="../../js/jquery.easing.1.3.js"></script>
-  <script src="../../js/aos.js"></script>
-  <script src="../../js/jquery.fancybox.min.js"></script>
-  <script src="../../js/jquery.sticky.js"></script>
-  <script src="../../js/main.js"></script>
-    
-  </body>
+include('mentors.php');
+include('../../components/donate.php'); 
+include('../../components/footer.php'); 
+?> 
+</body>
 </html>

@@ -6,7 +6,7 @@
     <div class="row justify-content-center mb-5 text-center">
       <div class="col-lg-8 fade-up">
         <h2 class="display-5 fw-bold mb-3" style="color: var(--primary);">
-          Témoignages & Nos Alumni
+          Témoignages
         </h2>
         <div class="mx-auto mb-3" style="width: 60px; height: 4px; background-color: var(--primary); border-radius: 10px;"></div>
         <p class="fs-6 mb-0" style="color: var(--primary); opacity: 0.9;">
@@ -22,30 +22,23 @@
           <div class="row align-items-center g-4">
             
             <div class="col-md-7">
-              <span class="badge rounded-pill px-3 py-2 fw-medium mb-3" style="background-color: var(--secondary); color: var(--primary);">
-                Témoignage Vedette
-              </span>
               <h3 class="h3 fw-bold mb-3" style="color: var(--secondary);">
                 "Comment notre réseau propulse les parcours d'excellence."
               </h3>
-              <p class="fs-6 mb-4" style="color: var(--text-white); opacity: 0.9;">
-                Visionnez le parcours d'intégration de nos diplômés et l'impact direct du réseau sur leurs opportunités de carrière.
-              </p>
               <div class="d-flex align-items-center gap-3">
                 <div style="width: 50px; height: 50px; flex-shrink: 0;">
-                  <img src="src/person_1.jpg" alt="Boukar Michel" class="rounded-circle img-fluid w-100 h-100" style="object-fit: cover; border: 2px solid var(--secondary);">
+                  <img src="src/person_1.jpg" alt="Boukar Michel" class="rounded-circle img-fluid w-100 h-100" style="object-fit: cover;">
                 </div>
                 <div>
                   <h4 class="h6 fw-bold mb-0" style="color: var(--secondary);">Boukar Michel</h4>
-                  <small class="fw-medium fs-7" style="color: var(--text-white); opacity: 0.8;">Ministre des Télécommunications</small>
+                  <small class="fw-medium fs-7" style="color: white; opacity: 0.8;">Ministre des Télécommunications</small>
                 </div>
               </div>
             </div>
             
             <div class="col-md-5">
               <div class="rounded-4 overflow-hidden position-relative" style="padding-bottom: 56.25%; height: 0; background-color: #000; border: 1px solid rgba(255, 255, 255, 0.2);">
-                <!-- Remplacez l'URL par votre intégration vidéo (YouTube/Vimeo/MP4) -->
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Témoignage Vidéo" allowfullscreen style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>
+                <iframe width="450" height="250" src="https://www.youtube.com/embed/xL4gyMX-uqg?si=Rnqwp9QM7IlFbRZi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </div>
 
@@ -68,8 +61,8 @@
               « L'encadrement et la synergie de cette communauté m'ont permis d'acquérir une vision stratégique essentielle pour mes fonctions ministérielles. »
             </p>
           </div>
-          <div class="pt-3 d-flex align-items-center gap-3" style="border-top: 1px solid rgba(1, 37, 135, 0.2);">
-            <img src="src/person_1.jpg" alt="Boukar Michel" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover; border: 2px solid var(--primary);">
+          <div class="pt-3 d-flex align-items-center gap-3" style="border-top: 1px solid var(--primary)">
+            <img src="src/person_1.jpg" alt="Boukar Michel" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
             <div>
               <h4 class="h6 fw-bold mb-0" style="color: var(--primary);">Boukar Michel</h4>
               <small class="fs-7" style="color: var(--primary); opacity: 0.8;">Ex-Ministre de la Digitalisation</small>
@@ -89,8 +82,8 @@
               « Transmettre la rigueur académique et promouvoir la recherche sont les piliers fondamentaux que nous continuons de faire rayonner ensemble. »
             </p>
           </div>
-          <div class="pt-3 d-flex align-items-center gap-3" style="border-top: 1px solid rgba(1, 37, 135, 0.2);">
-            <img src="src/person_2.jpg" alt="Mahamat Saleh Daoussa Haggar" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover; border: 2px solid var(--primary);">
+          <div class="pt-3 d-flex align-items-center gap-3" style="border-top: 1px solid var(--primary);">
+            <img src="src/person_2.jpg" alt="Mahamat Saleh Daoussa Haggar" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
             <div>
               <h4 class="h6 fw-bold mb-0" style="color: var(--primary);">M. S. Daoussa Haggar</h4>
               <small class="fs-7" style="color: var(--primary); opacity: 0.8;">Recteur de l'Université de N'Djaména</small>
@@ -110,8 +103,8 @@
               « L'engagement en faveur de l'excellence collective est la force motrice qui transforme nos institutions et prépare nos futurs dirigeants. »
             </p>
           </div>
-          <div class="pt-3 d-flex align-items-center gap-3" style="border-top: 1px solid rgba(1, 37, 135, 0.2);">
-            <img src="src/person_3.jpg" alt="Mahamat Ahmat Alhabo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover; border: 2px solid var(--primary);">
+          <div class="pt-3 d-flex align-items-center gap-3" style="border-top: 1px solid var(--primary);">
+            <img src="src/person_3.jpg" alt="Mahamat Ahmat Alhabo" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
             <div>
               <h4 class="h6 fw-bold mb-0" style="color: var(--primary);">Mahamat Ahmat Alhabo</h4>
               <small class="fs-7" style="color: var(--primary); opacity: 0.8;">Secrétaire Général de la Présidence</small>
