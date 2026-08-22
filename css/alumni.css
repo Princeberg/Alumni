@@ -218,3 +218,49 @@
   color: #ffffff;
   text-decoration: none;
 }
+.pub-card {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background-color: var(--primary); 
+}
+
+/* Bouton Recherche utilisant vos variables */
+.btn-search-custom {
+  background-color: var(--primary);
+  color: white; 
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-search-custom:hover {
+  background-color: var(--primary);
+  color: white; 
+  transform: scale(1.02); 
+}
+
+
+
+.alumni-info-box {
+  background-color: var(--secondary); 
+}
+
+/* Bouton WhatsApp */
+.btn-w{
+  background-color:var(--secondary); 
+  color: var(--primary); 
+  border: none;
+  font-weight: 600; 
+  border-radius: 10px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-w:hover {
+  background-color:var(--secondary); 
+  color: var(--primary); 
+  transform: scale(1.02);
+}
+
+.fs-7 {
+  font-size: 0.7rem;
+  color: var(--primary); 
+}

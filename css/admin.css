@@ -1,0 +1,19 @@
+.admin-nav {
+            border-bottom: 2px solid var(--primary);
+            background-color: var(--secondary);
+        }
+        .admin-brand-badge {
+            background-color: var(--primary);
+            color: var(--secondary);
+            font-weight: 800;
+            padding: 0.35rem 0.75rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        .nav-link-custom.active {
+            color: var(--primary) !important;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary);
+        }
+        
