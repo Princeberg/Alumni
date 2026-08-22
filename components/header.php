@@ -42,7 +42,7 @@
                     <a class="nav-link nav-link-custom " href="#programs-section">Nos Objectifs</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="nav-link nav-link-custom  "href="#publications">Actualités</a>
+                    <a class="nav-link nav-link-custom  "href="#publications">Publications</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link nav-link-custom  "href="#testimony">Témoignages</a>
