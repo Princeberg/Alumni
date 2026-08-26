@@ -44,10 +44,9 @@ $stmt->close();
   </div>
 
   <nav class="drawer-nav">
-    <a href="#home" onclick="closeMenu()"><i class="fa-solid fa-house"></i> Accueil</a>
-    <a href="#alumnis" onclick="closeMenu()"><i class="fa-solid fa-user-graduate"></i> Alumnis</a>
-    <a href="#publications" onclick="closeMenu()"><i class="fa-solid fa-newspaper"></i> Publications</a>
-    <a href="#don-section" onclick="closeMenu()"><i class="fa-solid fa-hand-holding-dollar"></i> Faire un Don</a>
+     <a href="#publications" onclick="closeMenu()"><i class="fa-solid fa-newspaper"></i> Publications</a>
+    <a href="#alumni-section" onclick="closeMenu()"><i class="fa-solid fa-user-graduate"></i> Alumnis</a>
+    <a href="#Donation" onclick="closeMenu()"><i class="fa-solid fa-hand-holding-dollar"></i> Faire un Don</a>
     
     <div class="drawer-divider"></div>
     
@@ -72,10 +71,9 @@ $stmt->close();
 
     <nav class="desktop-nav-links">
       <ul class="d-flex align-items-center m-0 p-0">
-        <li><a href="#home" class="nav-item-link">Accueil</a></li>
-        <li><a href="#alumnis" class="nav-item-link">Alumnis</a></li>
         <li><a href="#publications" class="nav-item-link">Publications</a></li>
-        <li><a href="#don-section" class="nav-item-link">Faire un Don</a></li>
+        <li><a href="#alumni-section" class="nav-item-link">Alumnis</a></li>
+        <li><a href="#Donation" class="nav-item-link">Faire un Don</a></li>
       </ul>
     </nav>
 

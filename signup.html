@@ -129,16 +129,16 @@
           </div>
         </div>
         
-        <div class="form-row mb-4">
-          <div class="form-group full-width">
-            <label for="whatsapp">Contact WhatsApp *</label>
-            <div class="input-wrapper">
-              <i class="fa-brands fa-whatsapp input-icon"></i>
-              <input type="text" id="whatsapp" name="whatsapp" placeholder="Ex: +235 66 00 00 00" required>
-            </div>
-            <div class="error-message" id="whatsapp-error"></div>
-          </div>
-        </div>
+       <div class="form-row mb-4">
+  <div class="form-group full-width">
+    <label for="whatsapp">Contact WhatsApp *</label>
+    <div class="input-wrapper">
+      <i class="fa-brands fa-whatsapp input-icon"></i>
+      <input type="tel" id="whatsapp" name="whatsapp" value="+" placeholder="Ex: +235 66 00 00 00" required>
+    </div>
+    <div class="error-message" id="whatsapp-error"></div>
+  </div>
+</div>
         
         <div class="form-actions d-flex justify-content-end">
           <button type="button" class="btn-submit" id="next-to-step2" style="width: auto; padding: 10px 24px;">
@@ -298,7 +298,33 @@
     ind3.classList.remove('active');
     ind2.classList.add('active');
   });
+
+
+  const whatsappInput = document.getElementById('whatsapp');
+
+whatsappInput.addEventListener('input', (e) => {
+  let val = e.target.value;
+
+  // Force le "+" au début si l'utilisateur tente de le supprimer
+  if (!val.startsWith('+')) {
+    val = '+' + val;
+  }
+
+  // Extrait uniquement les chiffres après le "+"
+  const numbersOnly = val.slice(1).replace(/\D/g, '');
+
+  // Recompose la valeur avec le "+" fixe suivi uniquement des chiffres
+  e.target.value = '+' + numbersOnly;
+});
+
+// Empêche de placer le curseur avant le signe "+"
+whatsappInput.addEventListener('keydown', (e) => {
+  if ((e.key === 'Backspace' || e.key === 'Delete') && whatsappInput.selectionStart <= 1 && whatsappInput.selectionEnd <= 1) {
+    e.preventDefault();
+  }
+});
 </script>
+
 
 </body>
 </html>
